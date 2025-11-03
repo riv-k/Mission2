@@ -1,0 +1,10 @@
+Test Case Number | Input (model, year) | Expected Output ($ value) | Test Description
+
+1 | "Civic", 2014 | 6614 | Normal valid input
+2 | "Focus", 2000 | 6625 | Different model
+3 | "911", 2020 | 2020 | Numbers ignored in model
+4 | "Civic!@#", 2014 | 6614 | Symbols ignored
+5 | "Civic", "two thousand" | error message | Invalid year type
+6 | 12345, 2014 | error message | Invalid model type
+7 | "", 2010 | error message | Empty model
+8 | "Civic", -2010 | error message | Negative year

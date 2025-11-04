@@ -33,7 +33,7 @@ describe('API.2 - Claim History', () => {
     // Testing Bussiness Rules
     test("Normal Case - 1 Keyword", async () => {
         const body = {
-            claim_history: "I had one crash last year"
+            claim_history: "I had one crash last year."
         };
 
         const res = await request(app)
@@ -46,7 +46,7 @@ describe('API.2 - Claim History', () => {
 
     test("Normal Case - Multiple keywords", async () => {
         const body = {
-            claim_history: "I had one crash last year and I there is a scratch on my door"
+            claim_history: "I had one crash last year and I there is a scratch on my door."
         };
 
         const res = await request(app)
@@ -70,13 +70,59 @@ describe('API.2 - Claim History', () => {
         expect(res.body.risk_rating).toEqual(expectedRiskRating);
     });
 
-    test.todo("Boundary Case - 0 Keywords");
-    test.todo("Boundary Case - 5+ keywords");
+    // test("Boundary Case - 0 Keywords", async () => {
+    //     const body = {
+    //         claim_history: "No incidents in the last 3 years."
+    //     };
 
-    test.todo("Edge Case - mixed capitalization");
-    test.todo("Edge Case - punctuation");
+    //     const res = await request(app)
+    //         .post('/risk-rating')
+    //         .send(body);
+
+    //     const expectedRiskRating = 1;
+    //     expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    // });
+    test.todo("Boundary Case - 0 Keywords"); // Will comback to later
+    test.todo("Boundary Case - 5+ keywords"); // Will comback to later
+
+    test("Edge Case - mixed capitalization", async () => {
+        const body = {
+            claim_history: "I had a minor CrAsH and a small Scratch last year."
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedRiskRating = 2;
+        expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    });
+
+    test("Edge Case - punctuation", async () => {
+        const body = {
+            claim_history: "crash? scratch! what are those?"
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedRiskRating = 2;
+        expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    });
 
     test.todo("Error Case - empty string");
-    test.todo("Error Case - null input");
+    test("Error Case - null input", async () => {
+        const body = {
+            claim_history: null
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedOutput = "there is an error";
+        expect(res.body.error).toEqual(expectedOutput);
+    });
     test.todo("Error Case - wrong data type");
 })

@@ -8,11 +8,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.use('/claim-history', claimHistoryRouter);
+app.use('/risk-rating', claimHistoryRouter);
 
 describe('API.2 - Claim History', () => {
     test("Responds with 200 Status Code", async () => {
-        const res = await request(app).get('/claim-history');
+        const res = await request(app).post('/risk-rating');
         expect(res.status).toEqual(200);
     })
 

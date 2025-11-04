@@ -11,12 +11,39 @@ app.use(express.json())
 app.use('/risk-rating', claimHistoryRouter);
 
 describe('API.2 - Claim History', () => {
+    // Testing basic API functionality
     test("Responds with 200 Status Code", async () => {
         const res = await request(app).post('/risk-rating');
-        expect(res.status).toEqual(200);
+        expect(res.status).toEqual(400); //updated res status because no body in this request
     })
 
-    test.todo("Normal Case - 1 Keyword");
+    test("Handles body request", async () => {
+        const body = {
+            claim_history: "My only claim was a crash."
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        expect(res.status).toEqual(200);
+        expect(res.body.risk_rating).toBeDefined();
+    })
+
+    // Testing Bussiness Rules
+    test("Normal Case - 1 Keyword", async () => {
+        const body = {
+            claim_history: "I had one crash last year"
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedRiskRating = 1;
+        expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    });
+
     test.todo("Normal Case - Multiple keywords");
     test.todo("Normal Case - keyword inside a word");
 

@@ -13,14 +13,3 @@ Test Case Number    |   Input (claim_history)   |   Expected Output (risk_rating
 8 | "" | {error: "there is an error"} | Error Case – empty string
 9 | null | {error: "there is an error"} | Error Case – null input
 10 | 12 | {error: "there is an error"} | Error Case – wrong data type
-
-
-Cases:
-normal, 
-edge / special, 
-boundary, 
-error / negative
-
-
-keywords:
-"collide", "crash", "scratch", "bump", "", and "smash"

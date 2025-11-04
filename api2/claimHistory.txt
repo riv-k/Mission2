@@ -10,6 +10,6 @@ Test Case Number    |   Input (claim_history)   |   Expected Output (risk_rating
 6 | "CrAsH" | {risk_rating :  1} | Edge Case - mixed capitalization
 7 | "crash? scratch!" |  {risk_rating :  2} | Edge Case - punctuation
 
-8 | "" | {error: "there is an error"} | Error Case – empty string
-9 | null | {error: "there is an error"} | Error Case – null input
-10 | 12 | {error: "there is an error"} | Error Case – wrong data type
+8 | "" | {error: "there is an error"} | Error Case - empty string
+9 | null | {error: "there is an error"} | Error Case - null input
+10 | 12 | {error: "there is an error"} | Error Case - wrong data type

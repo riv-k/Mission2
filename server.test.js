@@ -15,4 +15,18 @@ describe('API.2 - Claim History', () => {
         const res = await request(app).get('/claim-history');
         expect(res.status).toEqual(200);
     })
+
+    test.todo("Normal Case - 1 Keyword");
+    test.todo("Normal Case - Multiple keywords");
+    test.todo("Normal Case - keyword inside a word");
+
+    test.todo("Boundary Case - 0 Keywords");
+    test.todo("Boundary Case - 5+ keywords");
+
+    test.todo("Edge Case - mixed capitalization");
+    test.todo("Edge Case - punctuation");
+
+    test.todo("Error Case - empty string");
+    test.todo("Error Case - null input");
+    test.todo("Error Case - wrong data type");
 })

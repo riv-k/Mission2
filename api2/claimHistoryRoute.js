@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const { wordContainsKeyword } = require('./claimHistoryHelper');
+
+
 router.post('/', (req, res) => {
     const { claim_history } = req.body || {};
 
@@ -15,7 +18,7 @@ router.post('/', (req, res) => {
     for (let word of text) {
         word = word.replace(/[.,!?;:]/g, '');
 
-        if (keywords.includes(word)) {
+        if (wordContainsKeyword(word, keywords)) {
             count += 1;
         }
     }

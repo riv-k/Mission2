@@ -44,8 +44,31 @@ describe('API.2 - Claim History', () => {
         expect(res.body.risk_rating).toEqual(expectedRiskRating);
     });
 
-    test.todo("Normal Case - Multiple keywords");
-    test.todo("Normal Case - keyword inside a word");
+    test("Normal Case - Multiple keywords", async () => {
+        const body = {
+            claim_history: "I had one crash last year and I there is a scratch on my door"
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedRiskRating = 2;
+        expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    });
+
+    test("Normal Case - keyword inside a word", async () => {
+        const body = {
+            claim_history: "I had a few minor crashes last year, but nothing serious."
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedRiskRating = 1;
+        expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    });
 
     test.todo("Boundary Case - 0 Keywords");
     test.todo("Boundary Case - 5+ keywords");

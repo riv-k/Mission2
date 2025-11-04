@@ -13,12 +13,7 @@ app.use(express.json());
 // app.use('/api1', carValueRoute);
 // ===============
 
-// === Connect your APIs ===
-const carValueRoute = require('./Api-1/carValueRoute');
-const quoteRoute = require('./Api-3/quoteRoute');
-
+const carValueRoute = require('./api1/carValueRoute');
 app.use('/api1', carValueRoute);
-app.use('/api3', quoteRoute);
-// =========================
 
 app.listen(3000, () => console.log('Server running on port 3000'));

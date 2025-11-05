@@ -104,6 +104,15 @@ Example test cases for Car Value API:
 | 3 | {"model": "Task-Force", "year": -987} | {"error": "there is an error"} | Negative year |
 | 4 | {"model": "C200", "year": "twenty twenty"} | {"error": "there is an error"} | Invalid year format |
 
+Example test cases for Risk Rating API:
+| Test Case | Input | Expected Output | Description |
+|-----------|-------|-----------------|-------------|
+| 1 | {"claim_history": "No incidents in the past 3 years"} | {"risk_rating": 1} | Happy path - clean history |
+| 2 | {"claim_history": "One crash and one scratch incident"} | {"risk_rating": 2} | Multiple incidents |
+| 3 | {"claim_history": "Had a crash, then a smash, and another crash"} | {"risk_rating": 3} | Multiple similar keywords |
+| 4 | {"claim_history": "Multiple collide crash scratch bump smash incidents"} | {"risk_rating": 5} | Maximum risk rating |
+| 5 | {"claim_history": ""} | {"error": "there is an error"} | Empty claim history |
+
 ## Getting Started
 
 1. Clone the repository

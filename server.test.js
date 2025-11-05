@@ -70,8 +70,31 @@ describe('API.2 - Claim History', () => {
         expect(res.body.risk_rating).toEqual(expectedRiskRating);
     });
 
-    test.todo("Boundary Case - 0 Keywords"); // TODO: Will comback to later
-    test.todo("Boundary Case - 5+ keywords"); // TODO: Will comback to later
+    test("Boundary Case - 0 Keywords", async () => {
+        const body = {
+            claim_history: "No incidents in the last 3 years."
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedRiskRating = 1;
+        expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    });
+
+    test("Boundary Case - 5+ keywords", async () => {
+        const body = {
+            claim_history: "I have collided with a pedestrian, crashed into a building, bumped into a tree, scratched my car, had it smashed, and a cat scratched it just yesterday."
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedRiskRating = 5;
+        expect(res.body.risk_rating).toEqual(expectedRiskRating);
+    });
 
     test("Edge Case - mixed capitalization", async () => {
         const body = {

@@ -122,7 +122,19 @@ describe('API.2 - Claim History', () => {
         expect(res.body.risk_rating).toEqual(expectedRiskRating);
     });
 
-    test.todo("Error Case - empty string"); //TODO
+    test("Error Case - empty string", async () => {
+        const body = {
+            claim_history: ""
+        };
+
+        const res = await request(app)
+            .post('/risk-rating')
+            .send(body);
+
+        const expectedOutput = "there is an error";
+        expect(res.body.error).toEqual(expectedOutput);
+        expect(res.statusCode).toBe(400);
+    });
 
     test("Error Case - null input", async () => {
         const body = {

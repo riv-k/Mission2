@@ -9,7 +9,10 @@ Test Case Number    |   Input (claim_history)   |   Expected Output (risk_rating
 
 6 | "I had a minor CrAsH and a small Scratch last year." | {risk_rating :  2} | Edge Case - mixed capitalization
 7 | "crash? scratch! what are those?" |  {risk_rating :  2} | Edge Case - punctuation
+8 | " crash scratch " | {risk_rating : 2} | Edge Case - leading/trailing spaces
+9 | "!!! ??? ,,, ..." | {risk_rating : 1} | Edge Case - only punctuation
+10 | "crash,crash;crash." | {risk_rating : 3} | Edge Case - keywords with attached punctuation
 
-8 | "" | {error: "there is an error"} | Error Case - empty string
-9 | null | {error: "there is an error"} | Error Case - null input
-10 | 12 | {error: "there is an error"} | Error Case - wrong data type
+11 | "" | {error: "there is an error"} | Error Case - empty string
+12 | null | {error: "there is an error"} | Error Case - null input
+13 | 12 | {error: "there is an error"} | Error Case - wrong data type

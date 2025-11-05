@@ -8,4 +8,4 @@ app.use(express.json())
 
 app.use('/risk-rating', claimHistoryRouter);
 
-// app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log('Server running on port 3000'));

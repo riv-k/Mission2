@@ -1,0 +1,18 @@
+Test Case Number    |   Input (claim_history)   |   Expected Output (risk_rating)   |   Test Description
+
+1 | "I had one crash last year." | {risk_rating :  1} |  Normal Case - 1 Keyword
+2 | "I had one crash last year and I there is a scratch on my door." | {risk_rating :  2} | Normal Case - Multiple keywords
+3 | "I had a few minor crashes last year, but nothing serious." | {risk_rating :  1} | Normal Case - keyword inside a word
+
+4 | "No incidents in the last 3 years." | {risk_rating :  1} | Boundary Case - 0 Keywords
+5 | "I have collided with a pedestrian, crashed into a building, bumped into a tree, scratched my car, had it smashed, and a cat scratched it just yesterday." | {risk_rating :  5} | Boundary Case - 5+ keywords
+
+6 | "I had a minor CrAsH and a small Scratch last year." | {risk_rating :  2} | Edge Case - mixed capitalization
+7 | "crash? scratch! what are those?" |  {risk_rating :  2} | Edge Case - punctuation
+8 | " crash scratch " | {risk_rating : 2} | Edge Case - leading/trailing spaces
+9 | "!!! ??? ,,, ..." | {risk_rating : 1} | Edge Case - only punctuation
+10 | "crash,crash;crash." | {risk_rating : 3} | Edge Case - keywords with attached punctuation
+
+11 | "" | {error: "there is an error"} | Error Case - empty string
+12 | null | {error: "there is an error"} | Error Case - null input
+13 | 12 | {error: "there is an error"} | Error Case - wrong data type

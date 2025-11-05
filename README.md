@@ -139,7 +139,7 @@ npm start
 ### Car Value API
 
 ```bash
-POST /api/car-value
+POST /car-value
 Content-Type: application/json
 
 {
@@ -151,7 +151,7 @@ Content-Type: application/json
 ### Risk Rating API
 
 ```bash
-POST /api/risk-rating
+POST /risk-rating
 Content-Type: application/json
 
 {

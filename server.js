@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+
 // === EXAMPLE === 
 //      for when we start task 7
 
@@ -10,5 +12,8 @@ const app = express();
 // Add Route
 // app.use('/api1', carValueRoute);
 // ===============
+
+const carValueRoute = require('./api1/carValueRoute');
+app.use('/car-value', carValueRoute);
 
 app.listen(3000, () => console.log('Server running on port 3000'));

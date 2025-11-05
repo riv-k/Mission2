@@ -14,6 +14,6 @@ app.use(express.json());
 // ===============
 
 const carValueRoute = require('./api1/carValueRoute');
-app.use('/api1', carValueRoute);
+app.use('/car-value', carValueRoute);
 
 app.listen(3000, () => console.log('Server running on port 3000'));

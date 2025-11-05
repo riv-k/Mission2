@@ -1,4 +1,4 @@
-const getCarValue = require('./api1/carValue'); // import the **pure function**, NOT the router
+const getCarValue = require('./api1/carValue'); 
 
 describe('API 1 - Step 1', () => {
   test('Civic 2014 returns 6614', () => {

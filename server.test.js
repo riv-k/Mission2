@@ -12,9 +12,9 @@ app.use('/risk-rating', claimHistoryRouter);
 
 describe('API.2 - Claim History', () => {
     // Testing basic API functionality
-    test("Responds with 200 Status Code", async () => {
+    test("Responds with 400 Status Code - Missing Body but connects to route", async () => {
         const res = await request(app).post('/risk-rating');
-        expect(res.status).toEqual(400); //updated res status because no body in this request
+        expect(res.status).toEqual(400); 
     })
 
     test("Handles body request", async () => {

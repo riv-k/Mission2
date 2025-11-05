@@ -7,7 +7,8 @@ const { wordContainsKeyword } = require('./claimHistoryHelper');
 router.post('/', (req, res) => {
     const { claim_history } = req.body || {};
 
-    if (!claim_history) {
+    const isNotString = typeof claim_history !== 'string' ; 
+    if (!claim_history || isNotString) {
         return res.status(400).json({ error: "there is an error" });
     }
 

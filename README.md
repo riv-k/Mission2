@@ -75,7 +75,7 @@ Assesses driver risk based on claim history description.
 │   ├── carValue.txt        # Task 5 Test cases
 │   ├── carValueRoute.js    # API routes for car value
 ├── api2/
-│   ├── claimHistory.txt        # Task 5 Test cases
+│   ├── claimHistory.txt         # Task 5 Test cases
 │   ├── claimHistoryHelper.js    # Risk rating calculation logic
 │   ├── claimHistoryRoute.js     # API routes for risk rating
 ├── server.js               # Main server file
